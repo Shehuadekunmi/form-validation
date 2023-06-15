@@ -11,18 +11,7 @@ form.addEventListener('submit', (e) => {
 })  
 
 
-captcha.addEventListener('input', (e) => {
-    const img = document.querySelector('img')
-    const text = e.target.value;
-    const blurValue = 20 - text.length * 2;
-    img.style.filter = `blur(${blurValue}px)`;
-    if (blurValue <= 0) {
-        setSuccess(captcha);
-    } else {
-        setError(captcha, 'Text is not long enough')
-    }
-})
-    
+
 function checkInputs(){
     // console.log('you are doing the right things');
     // get users value
@@ -70,6 +59,18 @@ if (captchaVal === '') {
     setSuccess(captcha)
 }
 }
+
+captcha.addEventListener('input', (e) => {
+    const img = document.querySelector('img')
+    const text = e.target.value;
+    const blurValue = 20 - text.length * 2;
+    img.style.filter = `blur(${blurValue}px)`;
+    if (blurValue <= 0) {
+        setSuccess(captcha);
+    } else {
+        setError(captcha, 'Text is not long enough')
+    }
+})
 
 
 function setError (input, msg){
